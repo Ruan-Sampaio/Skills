@@ -1,0 +1,4 @@
+interface:
+  display_name: "Registrar Limpeza de Modulos"
+  short_description: "Planeja extracao segura de modulos"
+  default_prompt: "Use $registrar-limpeza-modulos para planejar a extracao de modulos do nsjFinancas para packages com baixo risco."

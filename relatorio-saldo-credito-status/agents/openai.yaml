@@ -1,0 +1,4 @@
+interface:
+  display_name: "Status do Saldo de Credito"
+  short_description: "Mapeia lacunas do relatorio de credito"
+  default_prompt: "Use $relatorio-saldo-credito-status para levantar o estado dos artefatos do relatorio de saldo de credito."

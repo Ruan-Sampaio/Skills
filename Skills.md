@@ -1,17 +1,24 @@
-﻿# Skills
+# Skills
 
-## verificar_units_redundantes.md
-Descricao: analisa `nsjFinancas.dpr`/`nsjFinancas.dproj` + `build/xmls/nsjfinancas.nsproj.xml` e identifica units cobertas por dependencia, com validacao de build obrigatoria antes de remover.
+## verificar-units-redundantes
+Path: `C:\@work\Skills\verificar-units-redundantes\SKILL.md`
+Descricao: audita `nsjFinancas.dpr`/`nsjFinancas.dproj` + `build/xmls/nsjfinancas.nsproj.xml` e identifica units candidatas a remocao com build obrigatorio.
 
-## investigar_filtro_saldo_adiantamento.md
-Descricao: rastreia perda de filtro de data do Extrato de Credito (Saldo Adiantamento) da UI ate SQL.
+## registrar-limpeza-modulos
+Path: `C:\@work\Skills\registrar-limpeza-modulos\SKILL.md`
+Descricao: planeja extracao segura de modulos `financas.*` para packages ou `commonfeature.*` usando modulo funcional completo.
 
-## relatorio_saldo_credito_status.md
+## investigar-filtro-saldo-adiantamento
+Path: `C:\@work\Skills\investigar-filtro-saldo-adiantamento\SKILL.md`
+Descricao: rastreia perda de filtro de data do Extrato de Credito ou Saldo Adiantamento da UI ate SQL.
+
+## relatorio-saldo-credito-status
+Path: `C:\@work\Skills\relatorio-saldo-credito-status\SKILL.md`
 Descricao: levanta estado atual dos artefatos ERP/SQL para relatorio de saldo de credito e aponta lacunas.
 
-## registrar_limpeza_modulos.md
-Descricao: planeja limpeza e migracao de modulos para `commonfeature.*` considerando modulo funcional completo (dao/dto/browser/ficha/frame/controller/constantes).
-
-## nsjfinancas_refactor_guardrails (nova skill)
-Descricao: regras de arquitetura e fluxo seguro para remover units redundantes e avaliar candidatos a package sem quebrar build.
+## nsjfinancas-refactor-guardrails
 Path: `C:\@work\Skills\nsjfinancas_refactor_guardrails\SKILL.md`
+Descricao: skill guarda-chuva com regras de arquitetura, seguranca de build e priorizacao de candidatos a package ou extracao.
+
+## Notas de origem
+Os arquivos `.md` soltos na raiz continuam como rascunho historico, mas as skills formais acima sao o ponto de uso principal.
