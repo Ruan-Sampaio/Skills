@@ -6,6 +6,11 @@ Analisar `nsjFinancas.dpr`/`nsjFinancas.dproj` contra `build/xmls/nsjfinancas.ns
 ## Regra critica (aprendida)
 Unit coberta por dependencia NAO pode ser removida automaticamente.
 Antes de remover, executar build completo e validar search path/package.
+Dependencia no `nsproj.xml` nao resolve `uses`; apenas ordena build.
+
+## Limitador real
+`DCC_UnitSearchPath` muito longo estoura o limite do `dcc` (linha de comando).
+Evitar expandir paths; prefira packages/dependencias.
 
 ## Fluxo recomendado
 1. Mapear `projectName -> projectPath` por `build/xmls/*.nsproj.xml`.

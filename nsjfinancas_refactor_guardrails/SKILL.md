@@ -21,6 +21,22 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 - Definir modulo por dominio funcional transversal, nao por pasta tecnica isolada.
 - Priorizar packages em modulos com multiplas camadas coesas e baixo acoplamento externo.
 
+## Regras de dependencia (aprendidas)
+- Dependencia no `nsproj.xml` garante ordem de build, mas NAO resolve `uses` do compilador.
+- Para resolver unit faltando, existem 3 vias:
+  1. Colocar a unit no mesmo package/projeto.
+  2. Criar/usar package separado e depender dele.
+  3. Adicionar o caminho no `DCC_UnitSearchPath`.
+- Se a unit ja existe em algum package:
+  - adicionar a dependencia do package correspondente (evitar `UnitSearchPath` longo).
+- Se a unit existe somente no `financas`:
+  - avaliar criar um novo package com o modulo completo (dao/dto/browser/ficha/frame/controller/constantes etc).
+
+## Limitadores de build
+- `DCC_UnitSearchPath` muito longo estoura o limite de linha do `dcc`.
+- Evitar adicionar dezenas de caminhos; prefira packages/dependencias.
+- Se precisar de alias, use `DCC_UnitAlias` (ex.: `ComObj=System.Win.ComObj`) ao inves de criar unit de compatibilidade.
+
 ## Saida minima esperada
 - lista de units candidatas + risco
 - lista de modulos candidatos a package + camadas encontradas
