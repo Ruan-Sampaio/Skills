@@ -1,4 +1,4 @@
-# Skills
+﻿# Skills
 
 ## verificar-units-redundantes
 Path: `C:\@work\Skills\verificar-units-redundantes\SKILL.md`
@@ -26,3 +26,4 @@ Descricao: padroniza decisoes de arquitetura e contrato ERP/SQL antes de refacto
 
 ## Notas de origem
 Os arquivos `.md` soltos na raiz continuam como rascunho historico, mas as skills formais acima sao o ponto de uso principal.
+

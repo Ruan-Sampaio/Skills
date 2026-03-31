@@ -1,11 +1,11 @@
----
+﻿---
 name: nsjfinancas-refactor-guardrails
-description: Regras e workflow para refatorar `nsjFinancas` com seguranca. Use quando precisar analisar units redundantes no `dpr/dproj`, validar impacto de dependencias do `nsproj`, definir fronteira de modulo funcional, priorizar candidatos a package, ou escolher extracoes de baixo risco a partir do schema `financas` sem quebrar build.
+description: Regras e workflow para refatorar `nsjFinancas` com seguranca. Use quando precisar analisar units redundantes no `dpr/dproj`, validar impacto de dependencias do `nsproj`, definir fronteira de modulo funcional, priorizar candidatos a package, mitigar `F2046 Out of memory` no Delphi Win32, ou escolher extracoes de baixo risco a partir do schema `financas` sem quebrar build.
 ---
 
 # NSJFinancas Refactor Guardrails
 
-Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dproj`, `build/xmls/nsjfinancas.nsproj.xml`, proposta de package, ou plano de extracao de modulo.
+Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dproj`, `build/xmls/nsjfinancas.nsproj.xml`, proposta de package, plano de extracao de modulo, ou falha de build com `F2046`.
 
 ## Fluxo obrigatorio
 
@@ -39,6 +39,15 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
   3. adicionar o caminho no `DCC_UnitSearchPath`
 - Se a unit ja existe em package, preferir dependencia de package.
 - Se a unit existe somente no `financas`, avaliar criar um package com o modulo completo.
+
+## Mitigacao de F2046 (Win32)
+
+- Tratar `F2046` como limite de memoria do `dcc32`, nao apenas falta de RAM da maquina.
+- Priorizar limpeza de `interface uses` em units de alto fan-out (`browser base`, `controller base`, `dao base`).
+- Manter na `interface` apenas dependencias exigidas por assinaturas publicas, heranca e tipos de campo/propriedade.
+- Mover o restante para `implementation uses`.
+- Em blocos `{$IFDEF}`, validar separadores para evitar virgula orfa.
+- Executar build completo a cada lote e registrar a unit alvo do erro na IDE quando houver.
 
 ## Limitadores de build
 

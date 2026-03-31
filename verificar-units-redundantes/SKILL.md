@@ -1,6 +1,6 @@
----
+﻿---
 name: verificar-units-redundantes
-description: Audita `nsjFinancas.dpr`, `nsjFinancas.dproj` e `build/xmls/nsjfinancas.nsproj.xml` para encontrar units potencialmente redundantes sem quebrar o build. Use quando limpar `uses`, remover `DCCReference`, investigar erro `F2613`, validar se uma unit ja vem de package/dependencia, ou preparar uma remocao incremental com build obrigatorio.
+description: Audita `nsjFinancas.dpr`, `nsjFinancas.dproj` e `build/xmls/nsjfinancas.nsproj.xml` para encontrar units potencialmente redundantes sem quebrar o build. Use quando limpar `uses`, remover `DCCReference`, investigar erro `F2613`, validar se uma unit ja vem de package/dependencia, mitigar `F2046 Out of memory` com movimentacao de `interface uses` para `implementation uses`, ou preparar remocao incremental com build obrigatorio.
 ---
 
 # Verificar Units Redundantes
@@ -10,12 +10,13 @@ Executar este fluxo ao analisar units do `nsjFinancas` que parecem cobertas por 
 ## Fluxo
 
 1. Ler [workflow.md](references/workflow.md).
-2. Mapear `projectName -> projectPath` a partir de `build/xmls/*.nsproj.xml`.
-3. Ler dependencias de `build/xmls/nsjfinancas.nsproj.xml`.
-4. Extrair units do `.dpr` e do `.dproj`.
-5. Resolver qual projeto ou package contem cada unit.
-6. Marcar a unit apenas como `candidata`.
-7. Remover em lote pequeno e exigir build completo antes de prosseguir.
+2. Ler [uses-move-rules.md](references/uses-move-rules.md) quando houver `F2046`.
+3. Mapear `projectName -> projectPath` a partir de `build/xmls/*.nsproj.xml`.
+4. Ler dependencias de `build/xmls/nsjfinancas.nsproj.xml`.
+5. Extrair units do `.dpr` e do `.dproj`.
+6. Resolver qual projeto ou package contem cada unit.
+7. Marcar a unit apenas como `candidata`.
+8. Remover ou mover `uses` em lote pequeno e exigir build completo antes de prosseguir.
 
 ## Regras de decisao
 
@@ -23,9 +24,10 @@ Executar este fluxo ao analisar units do `nsjFinancas` que parecem cobertas por 
 - Tratar `nsproj` como ordem de build, nao como garantia de resolucao de `uses`.
 - Preferir dependencia de package a expandir `DCC_UnitSearchPath`.
 - Se uma remocao falhar com `F2613`, restaurar o lote e investigar search path, package dono e aliases.
+- Se houver `F2046`, priorizar corte de `interface uses` em units-base antes de qualquer mudanca estrutural maior.
 
 ## Saida minima
 
 - Tabela ou CSV com `unit`, `arquivo_origem`, `projeto_dono`, `package_dono`, `e_dependencia`, `e_candidata`, `risco`.
-- Lote proposto para remocao.
+- Lote proposto para remocao ou movimentacao de `uses`.
 - Resultado do build apos cada lote.
