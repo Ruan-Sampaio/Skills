@@ -20,5 +20,9 @@ Descricao: levanta estado atual dos artefatos ERP/SQL para relatorio de saldo de
 Path: `C:\@work\Skills\nsjfinancas_refactor_guardrails\SKILL.md`
 Descricao: skill guarda-chuva com regras de arquitetura, seguranca de build e priorizacao de candidatos a package ou extracao.
 
+## nsjfinancas-padrao-projeto
+Path: `C:\@work\Skills\nsjfinancas-padrao-projeto\SKILL.md`
+Descricao: padroniza decisoes de arquitetura e contrato ERP/SQL antes de refactor ou mudanca estrutural.
+
 ## Notas de origem
 Os arquivos `.md` soltos na raiz continuam como rascunho historico, mas as skills formais acima sao o ponto de uso principal.

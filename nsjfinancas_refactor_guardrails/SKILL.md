@@ -17,6 +17,7 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
    - [registrar-limpeza-modulos](..\registrar-limpeza-modulos\SKILL.md)
    - [investigar-filtro-saldo-adiantamento](..\investigar-filtro-saldo-adiantamento\SKILL.md)
    - [relatorio-saldo-credito-status](..\relatorio-saldo-credito-status\SKILL.md)
+   - [nsjfinancas-padrao-projeto](..\nsjfinancas-padrao-projeto\SKILL.md)
 5. Gerar analise em CSV ou tabela objetiva com candidatas e justificativa.
 6. Aplicar alteracoes em lote pequeno.
 7. Rodar build completo apos cada lote.
