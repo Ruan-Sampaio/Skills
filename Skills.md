@@ -23,7 +23,3 @@ Descricao: skill guarda-chuva com regras de arquitetura, seguranca de build e pr
 ## nsjfinancas-padrao-projeto
 Path: `C:\@work\Skills\nsjfinancas-padrao-projeto\SKILL.md`
 Descricao: padroniza decisoes de arquitetura e contrato ERP/SQL antes de refactor ou mudanca estrutural.
-
-## Notas de origem
-Os arquivos `.md` soltos na raiz continuam como rascunho historico, mas as skills formais acima sao o ponto de uso principal.
-
