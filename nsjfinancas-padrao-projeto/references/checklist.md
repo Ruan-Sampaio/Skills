@@ -7,6 +7,12 @@
 3. Existe risco de quebra por contrato ERP x SQL?
 4. O plano esta dividido em lotes pequenos?
 5. Existe criterio objetivo de validacao apos cada lote?
+6. A alteracao manteve `Windows-1252` sem corromper caracteres?
+7. Numeros magicos foram movidos para `constantes`?
+8. Componente novo respeita padrao `TCX`?
+9. Se houve cast de GUID, foi usado o guia `E:\Nasajon\ManipulacaoGuid.txt`?
+10. Se houve mudanca SQL, ela continua compativel com `PostgreSQL 9.3`?
+11. A mudanca SQL evitou `jsonb`, `to_jsonb` e `FILTER (...)`?
 
 ## Template de saida
 

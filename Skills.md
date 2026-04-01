@@ -22,4 +22,4 @@ Descricao: skill guarda-chuva com regras de arquitetura, seguranca de build e pr
 
 ## nsjfinancas-padrao-projeto
 Path: `C:\@work\Skills\nsjfinancas-padrao-projeto\SKILL.md`
-Descricao: padroniza decisoes de arquitetura e contrato ERP/SQL antes de refactor ou mudanca estrutural.
+Descricao: padroniza decisoes de arquitetura e contrato ERP/SQL antes de refactor ou mudanca estrutural, incluindo guardrails fixos de `PostgreSQL 9.3`, proibicao de `jsonb` e preservacao de `Windows-1252`.

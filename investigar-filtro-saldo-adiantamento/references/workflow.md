@@ -11,7 +11,8 @@ Rastrear onde filtros de data do Extrato de Credito ou Saldo Adiantamento se per
 3. Confirmar propagacao para DAO, incluindo parametros e binds.
 4. Confirmar o SQL final executado e as datas realmente usadas.
 5. Validar timezone, conversao `date` versus `datetime` e defaults.
-6. Produzir relatorio com arquivo, linha, snippet, causa provavel e patch minimo.
+6. Validar se o SQL proposto respeita `PostgreSQL 9.3` e preserva `Windows-1252` ao editar arquivo.
+7. Produzir relatorio com arquivo, linha, snippet, causa provavel e patch minimo.
 
 ## Perguntas obrigatorias
 

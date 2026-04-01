@@ -16,6 +16,15 @@ Aplicar esta skill antes de implementar mudancas estruturais no `nsjFinancas`.
 5. Produzir decisao tecnica com risco, impacto e ordem de execucao.
 6. Aplicar em lote pequeno e exigir build completo.
 
+## Contexto fixo do ambiente
+
+- Repositorio principal: `C:\@work\erp-financas-servicos` (Delphi)
+- Encoding padrao dos fontes: `Windows-1252`
+- Banco de dados de referencia: `PostgreSQL 9.3`
+- Pasta padrao para scripts SQL: `C:\@work\bancos\desktop\Scripts`
+- Comando util de conexao local:
+  `psql -h localhost -U postgres -d teste -P pager=off`
+
 ## Regras
 
 - Definir modulo por dominio funcional completo, nao por pasta tecnica.
@@ -23,6 +32,10 @@ Aplicar esta skill antes de implementar mudancas estruturais no `nsjFinancas`.
 - Tratar unit como candidata ate build validar.
 - Manter assinatura de funcoes SQL estavel quando o layout ERP depende de campos fixos.
 - Registrar diferenca entre `layout usa campo` e `funcao retorna campo`.
+- Em SQL para este projeto, assumir `PostgreSQL 9.3` como limite real de compatibilidade.
+- Nao introduzir `jsonb`, `to_jsonb`, `jsonb_*`, `FILTER (...)` nem sintaxe que exija `PostgreSQL 9.4+`.
+- `json` e `json_array_elements` podem ser usados quando ja fizerem parte do contrato existente.
+- Preservar encoding fisico `Windows-1252` ao editar scripts e fontes; evitar conversao silenciosa para UTF-8.
 
 ## Saida minima
 

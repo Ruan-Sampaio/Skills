@@ -29,6 +29,7 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 - Definir modulo por dominio funcional transversal, nao por pasta tecnica isolada.
 - Priorizar packages em modulos com multiplas camadas coesas e baixo acoplamento externo.
 - Para extracao de `financas`, priorizar primeiro blocos de cadastro ou leitura com baixo acoplamento.
+- Quando houver impacto em SQL, herdar as restricoes do projeto: `PostgreSQL 9.3`, sem `jsonb`, sem `to_jsonb` e sem `FILTER (...)`.
 
 ## Regras de dependencia
 

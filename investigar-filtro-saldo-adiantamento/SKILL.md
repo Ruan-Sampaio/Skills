@@ -24,6 +24,9 @@ Executar este fluxo ao depurar filtros de data ou tipo de selecao ligados ao sal
 - Capturar nomes de campos, assinaturas e tipos em cada camada.
 - Diferenciar claramente `nao foi enviado`, `foi enviado nulo` e `foi sobrescrito`.
 - Se houver fallback em banco, registrar o comportamento exato.
+- Se a investigacao tocar SQL, validar compatibilidade com `PostgreSQL 9.3` antes de propor patch.
+- Nao propor `jsonb`, `to_jsonb`, `jsonb_*` ou `FILTER (...)` em correcao SQL desse projeto.
+- Se houver necessidade de filtro condicional em agregacao, preferir `CASE WHEN`.
 
 ## Saida minima
 

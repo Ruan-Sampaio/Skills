@@ -22,6 +22,9 @@ Executar este fluxo para diagnosticar cobertura atual do relatorio de saldo de c
 - Distinguir artefato de UI, camada de aplicacao e camada SQL.
 - Se houver mais de uma versao do relatorio, comparar comportamento e nao apenas nomes.
 - Registrar caminho absoluto do artefato e papel de cada um.
+- Na camada SQL, registrar explicitamente incompatibilidades com `PostgreSQL 9.3`.
+- Tratar `jsonb`, `to_jsonb` e `FILTER (...)` como incompatibilidades objetivas.
+- Nao marcar `json`, `json_array_elements` ou `LATERAL` como problema de versao por si so.
 
 ## Saida minima
 
