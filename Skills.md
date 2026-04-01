@@ -23,3 +23,7 @@ Descricao: skill guarda-chuva com regras de arquitetura, seguranca de build e pr
 ## nsjfinancas-padrao-projeto
 Path: `C:\@work\Skills\nsjfinancas-padrao-projeto\SKILL.md`
 Descricao: padroniza decisoes de arquitetura e contrato ERP/SQL antes de refactor ou mudanca estrutural, incluindo guardrails fixos de `PostgreSQL 9.3`, proibicao de `jsonb` e preservacao de `Windows-1252`.
+
+## migrar-bordero-package
+Path: `C:\@work\Skills\migrar-bordero-package\SKILL.md`
+Descricao: extrai o fluxo de bordero para package proprio em fases pequenas, mantendo nome das units, removendo-as do `nsjFinancas.dpr/.dproj` e registrando checkpoints para retomada.

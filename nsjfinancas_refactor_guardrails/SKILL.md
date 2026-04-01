@@ -34,6 +34,11 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 ## Regras de dependencia
 
 - Dependencia no `nsproj.xml` garante ordem de build, mas nao resolve `uses` do compilador.
+- Em migracao para package, validar sempre o trio:
+  1. `build/xmls/nsjfinancas.nsproj.xml` contem `<dependencia>` do package
+  2. `nsjFinancas.dpr` removeu as units legadas equivalentes
+  3. `nsjFinancas.dproj` removeu os `DCCReference` equivalentes
+- Se o package foi criado, mas o `dpr/dproj` principal ainda lista as units `u*` legadas, o compilador continua puxando o caminho antigo.
 - Para resolver unit faltando, existem 3 vias:
   1. colocar a unit no mesmo package ou projeto
   2. criar ou usar package separado e depender dele
@@ -44,10 +49,10 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 ## Mitigacao de F2046 (Win32)
 
 - Tratar `F2046` como limite de memoria do `dcc32`, nao apenas falta de RAM da maquina.
-- Priorizar limpeza de `interface uses` em units de alto fan-out (`browser base`, `controller base`, `dao base`).
-- Manter na `interface` apenas dependencias exigidas por assinaturas publicas, heranca e tipos de campo/propriedade.
-- Mover o restante para `implementation uses`.
+- 1º remover units desnecessarias no `uses` (principalmente em units de alto fan-out como `browser base`, `controller base`, `dao base`).
+- 2º limpar o `interface uses`: manter apenas dependencias exigidas por assinaturas publicas, heranca e tipos de campo/propriedade; mover o restante para `implementation uses`.
 - Em blocos `{$IFDEF}`, validar separadores para evitar virgula orfa.
+- Em arquivos com `uses` muito longos, validar itens inline no mesmo trecho (`, UnitX, UnitY,`) antes de remover; remocao so por inicio de linha pode deixar lixo.
 - Executar build completo a cada lote e registrar a unit alvo do erro na IDE quando houver.
 
 ## Limitadores de build

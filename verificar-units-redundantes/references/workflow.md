@@ -12,13 +12,18 @@ Analisar `nsjFinancas.dpr` e `nsjFinancas.dproj` contra `build/xmls/nsjfinancas.
 4. Extrair `DCCReference` do `.dproj`.
 5. Resolver o arquivo `.pas` e o projeto dono de cada unit.
 6. Marcar a unit como candidata apenas se houver evidencias de cobertura por package/dependencia.
-7. Propor remocao em lote pequeno.
-8. Rodar build completo.
-9. Se quebrar, restaurar o lote e registrar a causa.
+7. Se houver migracao para package, validar o trio:
+   - dependencia do package no `build/xmls/nsjfinancas.nsproj.xml`
+   - remocao da unit legada no `nsjFinancas.dpr`
+   - remocao do `DCCReference` equivalente no `nsjFinancas.dproj`
+8. Propor remocao em lote pequeno.
+9. Rodar build completo.
+10. Se quebrar, restaurar o lote e registrar a causa.
 
 ## Guardrails
 
 - Dependencia no `nsproj.xml` nao resolve `uses`; ela so ajuda na ordem de build.
+- Se o `dpr/dproj` principal ainda lista unit legada, tratar como migracao incompleta, mesmo com package criado.
 - `DCC_UnitSearchPath` longo demais pode estourar o limite do `dcc`.
 - Se a unit ja existe em package, preferir dependencia de package.
 - Se a unit for necessaria so por compatibilidade, avaliar `DCC_UnitAlias` antes de criar gambiarra.
