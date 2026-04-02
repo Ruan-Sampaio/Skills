@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bancos SQL Guardrails"
+  short_description: "Protege scripts SQL do repo Bancos"
+  default_prompt: "Use $bancos-sql-guardrails para revisar ou criar scripts SQL no repo Bancos com compatibilidade 9.3, pasta correta e regras do legado."

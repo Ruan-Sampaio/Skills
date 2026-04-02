@@ -15,13 +15,16 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 4. Se o trabalho for focado, preferir a skill especializada correspondente:
    - [verificar-units-redundantes](..\verificar-units-redundantes\SKILL.md)
    - [registrar-limpeza-modulos](..\registrar-limpeza-modulos\SKILL.md)
+   - [migrar-units-package-incremental](..\migrar-units-package-incremental\SKILL.md)
    - [investigar-filtro-saldo-adiantamento](..\investigar-filtro-saldo-adiantamento\SKILL.md)
    - [relatorio-saldo-credito-status](..\relatorio-saldo-credito-status\SKILL.md)
    - [nsjfinancas-padrao-projeto](..\nsjfinancas-padrao-projeto\SKILL.md)
 5. Gerar analise em tabela objetiva com candidatas e justificativa.
-6. Aplicar alteracoes em lote pequeno.
-7. Rodar build isolado por package antes de build amplo quando houver `F2046`.
-8. Rodar build completo apos cada lote viavel.
+6. Antes de criar package novo (`.dpr/.dproj`), validar se existe dependencia circular de codigo entre modulo candidato e modulo consumidor.
+7. Se houver risco de ciclo, quebrar primeiro o acoplamento por contrato minimo (ex.: depender de tipo base comum) e somente depois criar/ligar package.
+8. Aplicar alteracoes em lote pequeno.
+9. Rodar build isolado por package antes de build amplo quando houver `F2046`.
+10. Rodar build completo apos cada lote viavel.
 
 ## Regras de decisao
 
@@ -49,6 +52,8 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 - Se a unit ja existe em package, preferir dependencia de package.
 - Se a unit existe somente no `financas`, avaliar criar um package com o modulo completo.
 - Antes de extrair modulo para package novo, validar dependencias cruzadas para evitar ciclo entre packages.
+- Se o modulo A usa unit de B e B usa unit de A, tratar como ciclo de origem; quebrar esse acoplamento antes de concluir extracao.
+- Evitar mover unit de dominio sem necessidade so para fechar ciclo; priorizar reduzir acoplamento por interface/tipo base compartilhado.
 
 ## Padrao de GUID
 

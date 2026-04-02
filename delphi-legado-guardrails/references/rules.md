@@ -11,11 +11,26 @@
 
 - Nao usar recursos de versoes mais novas da linguagem, RTL ou VCL.
 - Preservar comportamento funcional atual quando a tarefa for de manutencao.
+- Evitar numeros magicos; preferir constantes nomeadas.
+
+## Padrao de projeto
+
+- Respeitar o fluxo de camadas do projeto:
+  - `ficha/frame/browser`
+  - `controller`
+  - `dao`, `dto`, `constantes`
+- Queries devem nascer no `DAO`.
+- `controller` faz a ponte entre camada visual e `DAO`.
+- Constantes devem ficar na unidade de `constantes` do modulo.
+
+## Componentes
+
+- Ao criar componentes visuais, preferir os componentes da biblioteca `TCX` quando esse padrao estiver disponivel no projeto.
 
 ## GUID
 
 - Em cast ou manipulacao de GUID, usar somente o padrao definido em:
-  `E:\Nasajon\ManipulaçãoGuid.txt`
+  `E:\Nasajon\ManipulacaoGuid.txt`
 
 ## ORM
 

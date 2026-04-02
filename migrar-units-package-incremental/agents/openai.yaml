@@ -1,0 +1,4 @@
+interface:
+  display_name: "Migrar Units Package Incremental"
+  short_description: "Move units uma a uma com build"
+  default_prompt: "Use $migrar-units-package-incremental para mover units para package uma a uma, com build por etapa e rollback do ultimo passo se necessario."

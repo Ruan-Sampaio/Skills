@@ -1,4 +1,4 @@
 interface:
   display_name: "Verificar Units Redundantes"
   short_description: "Audita units candidatas sem quebrar build"
-  default_prompt: "Use $verificar-units-redundantes para auditar units candidatas a remocao no nsjFinancas sem quebrar o build."
+  default_prompt: "Use $verificar-units-redundantes para cruzar dpr, dproj e nsproj do nsjFinancas, localizar o projeto dono das units e auditar candidatas a remocao sem quebrar o build."

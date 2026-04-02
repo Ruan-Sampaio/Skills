@@ -11,18 +11,45 @@ Cada item abaixo diz quando usar a skill, quando nao usar e qual prioridade ela 
 - Quando uma skill de diagnostico identificar causa raiz e a correcao exigir outra skill mais especifica, trocar para a skill de execucao adequada.
 
 ## Atalhos de roteamento rapido
+- build, compilar, gerar executavel, `nsbuild`, `build_all_debug.bat`, build do projeto atual -> `build-erp-workspace`
+- criar, revisar ou alterar script SQL no repo Bancos -> `bancos-sql-guardrails`
 - `dpr`, `dproj`, `nsproj`, `commonfeature`, package, `F2046`, `F2613` -> verificar primeiro `nsjfinancas-refactor-guardrails`, `nsjfinancas-padrao-projeto`, `verificar-units-redundantes` ou `registrar-limpeza-modulos`
+- mover unit por etapa, migracao incremental, rollback da ultima unit, limitar `DCC_UnitSearchPath` -> `migrar-units-package-incremental`
 - bordero -> `migrar-bordero-package`
 - saldo adiantamento com filtro de data ou divergencia tela/CSV -> `investigar-filtro-saldo-adiantamento`
 - saldo adiantamento com estorno, quitacao, transferencia ou recalculo -> `financeiro-estorno-adiantamento-debug`
 - regressao em function SQL de `financas` -> `forense-funcao-sql-financas`
 - evoluir base local ou abrir log do `EvoluirBanco.bat` -> `bancos-evolucao-desktop`
 
+## build-erp-workspace
+Path: `C:\@work\Skills\build-erp-workspace\SKILL.md`
+Use quando: o usuario pedir para buildar, compilar, gerar executavel, rodar `nsbuild`, rodar `build_all_debug.bat` ou buildar o projeto atual em repos ERP suportados.
+Nao usar quando: a tarefa for evolucao de banco, build de projeto fora do padrao ERP Delphi, ou quando o usuario pedir explicitamente um fluxo fora da matriz desta skill.
+Sinais de disparo: build do projeto atual, compilar repo atual, gerar executavel, `nsbuild`, `build_all_debug.bat`, build do admin, build do financas, build do persona, build do utils.
+Repos mais comuns: `/financas-servicos`, `/admin`, `/utils`, `/libraries`.
+Prioridade: maxima para build padrao de repos ERP.
+
+## bancos-sql-guardrails
+Path: `C:\@work\Skills\bancos-sql-guardrails\SKILL.md`
+Use quando: a tarefa envolver criar, revisar ou alterar script SQL no repo Bancos, inclusive `function`, `view`, `type`, `trigger`, `RTM`, tabela, coluna ou `CRUD`.
+Nao usar quando: a tarefa for apenas rodar `EvoluirBanco.bat` ou fazer forense historica de regressao SQL sem editar script.
+Sinais de disparo: script SQL novo, pasta `desktop\Scripts`, `function`, `view`, `drop view if exists`, `create or replace`, `ns.has_column`, `ns.has_attribute`, `RTM`, `owner to`.
+Repos mais comuns: `/bancos`.
+Prioridade: maxima para guardrails SQL no repo Bancos.
+
+## migrar-units-package-incremental
+Path: `C:\@work\Skills\migrar-units-package-incremental\SKILL.md`
+Use quando: a tarefa pedir mover units para package uma a uma com build por etapa, rollback do ultimo passo e controle de risco de dependencia.
+Nao usar quando: a tarefa for planejamento macro de modulo inteiro sem execucao incremental.
+Sinais de disparo: mover 1 unit por vez, build apos cada move, rollback da ultima unit, limite de `DCC_UnitSearchPath`, cascata de `F2613`.
+Repos mais comuns: `/financas-servicos`.
+Prioridade: maxima para migracao incremental assistida.
+
 ## delphi-legado-guardrails
 Path: `C:\@work\Skills\delphi-legado-guardrails\SKILL.md`
 Use quando: houver manutencao ou revisao em Delphi VCL legado, especialmente em `erp-financas-servicos`.
 Nao usar quando: a tarefa for puramente SQL ou operacional de banco sem alteracao Delphi.
-Sinais de disparo: Delphi 10.1, VCL, `nsjFinancas`, GUID, ORM, `Windows-1252`, unit `.pas`, `.dfm`, `.dpr`, `.dproj`.
+Sinais de disparo: Delphi 10.1, VCL, `nsjFinancas`, GUID, ORM, `Windows-1252`, unit `.pas`, `.dfm`, `.dpr`, `.dproj`, `TCX`, numero magico, `controller`, `dao`, `dto`, `constantes`.
 Repos mais comuns: `/financas-servicos`, `/components`, `/libraries`.
 Prioridade: alta como guardrail de stack.
 
@@ -46,7 +73,7 @@ Prioridade: alta como guardrail estrutural.
 Path: `C:\@work\Skills\verificar-units-redundantes\SKILL.md`
 Use quando: precisar auditar `nsjFinancas.dpr`, `nsjFinancas.dproj` e `build/xmls/nsjfinancas.nsproj.xml` para encontrar units candidatas a remocao.
 Nao usar quando: a tarefa for definir modulo novo completo ou desenhar estrategia ampla de extracao.
-Sinais de disparo: `uses`, `DCCReference`, `unit redundante`, `unit coberta por package`, `F2613`, `interface uses`, `implementation uses`.
+Sinais de disparo: `uses`, `DCCReference`, `unit redundante`, `unit coberta por package`, `F2613`, `interface uses`, `implementation uses`, dono da unit, cruzar `dpr` com `dproj` e `nsproj`.
 Repos mais comuns: `/financas-servicos`.
 Prioridade: muito alta quando a pergunta for sobre unit especifica.
 

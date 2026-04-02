@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build ERP Workspace"
+  short_description: "Executa build padrao dos repos ERP"
+  default_prompt: "Use $build-erp-workspace para executar o build do repo ERP atual sem clean por padrao."

@@ -38,3 +38,10 @@ Priorizar modulo com:
 1. pelo menos 3 camadas presentes
 2. baixo acoplamento externo
 3. build verde apos extracao incremental
+
+## Checklist anti-ciclo (antes de criar package novo)
+
+1. verificar se o modulo candidato referencia unit de modulo consumidor
+2. verificar se o modulo consumidor referencia unit do candidato
+3. se ambos forem verdadeiros, tratar como ciclo e quebrar acoplamento primeiro
+4. apos quebra do ciclo, criar package e validar build isolado
