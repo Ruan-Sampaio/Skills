@@ -27,3 +27,11 @@ Descricao: padroniza decisoes de arquitetura e contrato ERP/SQL antes de refacto
 ## migrar-bordero-package
 Path: `C:\@work\Skills\migrar-bordero-package\SKILL.md`
 Descricao: extrai o fluxo de bordero para package proprio em fases pequenas, mantendo nome das units, removendo-as do `nsjFinancas.dpr/.dproj` e registrando checkpoints para retomada.
+
+## financeiro-estorno-adiantamento-debug
+Path: `C:\@work\Skills\financeiro-estorno-adiantamento-debug\SKILL.md`
+Descricao: diagnostica divergencia de saldo de credito em titulo adiantado, diferenciando problema de fluxo de estorno, vinculo `id_titulo_estorno`, `tipoestorno` e regra de recalc.
+
+## forense-funcao-sql-financas
+Path: `C:\@work\Skills\forense-funcao-sql-financas\SKILL.md`
+Descricao: rastreia regressao de funcao SQL por historico Git, confirma versao ativa no banco e comprova impacto com teste controlado.

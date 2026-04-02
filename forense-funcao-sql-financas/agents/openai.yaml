@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "Forense Funcao SQL Financas"
+  short_description: "Rastreia regressao por commit em funcao SQL"
+  default_prompt: "Use $forense-funcao-sql-financas para descobrir quando uma funcao SQL de financas mudou, validar no banco atual e apontar impacto."
