@@ -1,4 +1,0 @@
-interface:
-  display_name: "NSJFinancas Refactor Guardrails"
-  short_description: "Protege refactors e extracoes no nsjFinancas"
-  default_prompt: "Use $nsjfinancas-refactor-guardrails para planejar um refactor seguro no nsjFinancas sem quebrar build ou dependencias."

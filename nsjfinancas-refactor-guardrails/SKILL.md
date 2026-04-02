@@ -1,6 +1,6 @@
 ﻿---
 name: nsjfinancas-refactor-guardrails
-description: Regras e workflow para refatorar `nsjFinancas` com seguranca. Use quando precisar analisar units redundantes no `dpr/dproj`, validar impacto de dependencias do `nsproj`, definir fronteira de modulo funcional, priorizar candidatos a package, mitigar `F2046 Out of memory` no Delphi Win32, ou escolher extracoes de baixo risco a partir do schema `financas` sem quebrar build.
+description: Regras e workflow operacional para refatorar `nsjFinancas` com seguranca e previsibilidade. Use quando a tarefa envolver referencias diretas no `dpr/dproj`, impacto real de dependencias no `nsproj.xml`, mitigacao de `F2046`, `F2613`, search path ou execucao de extracoes para `commonfeature`; combine com skills mais especificas quando o modulo ou sintoma ja estiver claro.
 ---
 
 # NSJFinancas Refactor Guardrails
@@ -18,9 +18,10 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
    - [investigar-filtro-saldo-adiantamento](..\investigar-filtro-saldo-adiantamento\SKILL.md)
    - [relatorio-saldo-credito-status](..\relatorio-saldo-credito-status\SKILL.md)
    - [nsjfinancas-padrao-projeto](..\nsjfinancas-padrao-projeto\SKILL.md)
-5. Gerar analise em CSV ou tabela objetiva com candidatas e justificativa.
+5. Gerar analise em tabela objetiva com candidatas e justificativa.
 6. Aplicar alteracoes em lote pequeno.
-7. Rodar build completo apos cada lote.
+7. Rodar build isolado por package antes de build amplo quando houver `F2046`.
+8. Rodar build completo apos cada lote viavel.
 
 ## Regras de decisao
 
@@ -30,10 +31,12 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 - Priorizar packages em modulos com multiplas camadas coesas e baixo acoplamento externo.
 - Para extracao de `financas`, priorizar primeiro blocos de cadastro ou leitura com baixo acoplamento.
 - Quando houver impacto em SQL, herdar as restricoes do projeto: `PostgreSQL 9.3`, sem `jsonb`, sem `to_jsonb` e sem `FILTER (...)`.
+- Se o build falhar por unit faltando, verificar primeiro se a unit ja existe em package antes de mover novo bloco de codigo.
 
 ## Regras de dependencia
 
 - Dependencia no `nsproj.xml` garante ordem de build, mas nao resolve `uses` do compilador.
+- Dependencia no `nsproj.xml` nao "puxa" unit solta; o compilador so resolve unit visivel no projeto/package ou no `DCC_UnitSearchPath`.
 - Em migracao para package, validar sempre o trio:
   1. `build/xmls/nsjfinancas.nsproj.xml` contem `<dependencia>` do package
   2. `nsjFinancas.dpr` removeu as units legadas equivalentes
@@ -45,6 +48,12 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
   3. adicionar o caminho no `DCC_UnitSearchPath`
 - Se a unit ja existe em package, preferir dependencia de package.
 - Se a unit existe somente no `financas`, avaliar criar um package com o modulo completo.
+- Antes de extrair modulo para package novo, validar dependencias cruzadas para evitar ciclo entre packages.
+
+## Padrao de GUID
+
+- Sempre seguir o padrao do projeto para conversao/validacao de GUID em `E:\Nasajon\ManipulaçãoGuid.txt`.
+- Evitar `TryStringToGUID` no fluxo legado de `financas/common`; preferir `TManipuladorGUID.*` (`IsValidGuid`, `FromString`, `EmptyGuid`).
 
 ## Mitigacao de F2046 (Win32)
 
@@ -60,6 +69,7 @@ Executar este fluxo quando houver mudancas em `nsjFinancas.dpr`, `nsjFinancas.dp
 - `DCC_UnitSearchPath` muito longo estoura o limite de linha do `dcc`.
 - Evitar adicionar dezenas de caminhos; prefira packages e dependencias.
 - Se precisar de alias, usar `DCC_UnitAlias` em vez de criar unit de compatibilidade.
+- Quando aparecer cascata de `F2613`, tratar por grupo funcional (pasta/modulo) e decidir rapido: adicionar package/dependencia ou adicionar caminho temporario em lote.
 
 ## Candidatos de menor risco observados
 

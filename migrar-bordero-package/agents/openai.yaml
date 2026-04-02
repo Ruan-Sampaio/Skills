@@ -1,0 +1,4 @@
+interface:
+  display_name: "Migrar Bordero Package"
+  short_description: "Extrai bordero para package proprio"
+  default_prompt: "Use $migrar-bordero-package para migrar o fluxo de bordero do nsjFinancas para package proprio em fases de baixo risco."

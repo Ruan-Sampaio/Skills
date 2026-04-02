@@ -23,10 +23,13 @@ Analisar `nsjFinancas.dpr` e `nsjFinancas.dproj` contra `build/xmls/nsjfinancas.
 ## Guardrails
 
 - Dependencia no `nsproj.xml` nao resolve `uses`; ela so ajuda na ordem de build.
+- Dependencia no `nsproj.xml` nao resolve unit solta fora do package/projeto; para compilar, a unit precisa estar em package dependente, no projeto atual ou no `DCC_UnitSearchPath`.
 - Se o `dpr/dproj` principal ainda lista unit legada, tratar como migracao incompleta, mesmo com package criado.
 - `DCC_UnitSearchPath` longo demais pode estourar o limite do `dcc`.
 - Se a unit ja existe em package, preferir dependencia de package.
 - Se a unit for necessaria so por compatibilidade, avaliar `DCC_UnitAlias` antes de criar gambiarra.
+- Em cascata de `F2613`, corrigir por lote funcional (mesma pasta/modulo) para reduzir tentativa e erro unit a unit.
+- Antes de extrair modulo para package novo, checar se nao cria dependencia circular entre packages.
 
 ## Caso conhecido
 

@@ -1,6 +1,6 @@
 ---
 name: financeiro-estorno-adiantamento-debug
-description: Diagnostica divergencia de saldo e situacao em titulos de credito adiantados apos estorno, quitacao, transferencia ou recalculo. Use quando o usuario relatar saldo incorreto, situacao inconsistente (ex.: deveria ficar Em Debito), ou quando for necessario confirmar se a causa raiz esta no fluxo de estorno, no vinculo id_titulo_estorno, no tipoestorno, em atualizacoes manuais de saldoadiantamento, ou na funcao financas.atualiza_titulosadiantamentos.
+description: Diagnostica divergencia de saldo ou situacao em titulos de credito adiantados apos estorno, quitacao, transferencia ou recalculo. Use quando o problema envolver `id_titulo_estorno`, `tipoestorno`, `saldoadiantamento`, `Em Debito` ou `financas.atualiza_titulosadiantamentos`; nao use para bug de filtro de relatorio nem para forense historica de function SQL.
 ---
 
 # Financeiro Estorno Adiantamento Debug

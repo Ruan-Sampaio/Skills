@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delphi Legado Guardrails"
+  short_description: "Protege mudancas Delphi 10.1 legado"
+  default_prompt: "Use $delphi-legado-guardrails para revisar ou implementar mudancas Delphi legado com compatibilidade 10.1, baixo risco e preservacao de Windows-1252."

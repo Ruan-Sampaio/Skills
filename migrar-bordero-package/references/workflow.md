@@ -38,3 +38,11 @@
 
 - Se um lote quebrar, reverter apenas o lote da fase atual.
 - Nao misturar rollback com novas mudancas no mesmo commit/lote.
+
+## Regra de troubleshooting (quebra de build)
+
+Quando um lote quebrar, investigar nesta ordem:
+
+1. Verificar se a unit ja pertence a algum package e, se sim, adicionar esse package como dependencia no XML do package de bordero.
+2. Verificar se a unit (ou a causa da quebra) pode ser movida para dentro do package de bordero sem duplicar metodos.
+3. Usar `DCC_UnitSearchPath` apenas em ultimo caso, depois de descartar as alternativas anteriores.

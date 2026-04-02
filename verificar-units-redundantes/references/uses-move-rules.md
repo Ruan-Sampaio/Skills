@@ -23,6 +23,11 @@
 - Fazer lote grande demais e dificultar rollback.
 - Alterar encoding/BOM sem necessidade ao editar `.pas/.dproj`.
 
+## Regra de GUID
+
+- Em ajustes de `uses` que toquem parse/conversao de GUID, seguir `E:\Nasajon\ManipulaçãoGuid.txt`.
+- No legado de `financas/common`, evitar `TryStringToGUID`; usar `TManipuladorGUID.IsValidGuid`, `TManipuladorGUID.FromString` e `TManipuladorGUID.EmptyGuid`.
+
 ## Checklist por unit
 
 1. Interface compila com tipos publicos preservados.

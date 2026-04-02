@@ -1,4 +1,4 @@
-﻿interface:
+interface:
   display_name: "Financeiro Estorno Adiantamento Debug"
-  short_description: "Diagnostica divergencia de saldo e situacao de credito"
-  default_prompt: "Use $financeiro-estorno-adiantamento-debug para identificar a causa raiz de saldo ou situacao incorreta em titulos de credito apos estorno, transferencia, quitacao ou recalculo."
+  short_description: "Diagnostica saldo e situacao apos estorno"
+  default_prompt: "Use $financeiro-estorno-adiantamento-debug para identificar a causa raiz de saldo ou situacao incorreta em titulo de credito adiantado apos estorno, quitacao, transferencia ou recalculo."

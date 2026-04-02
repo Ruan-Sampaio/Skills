@@ -1,6 +1,6 @@
 ﻿---
 name: verificar-units-redundantes
-description: Audita `nsjFinancas.dpr`, `nsjFinancas.dproj` e `build/xmls/nsjfinancas.nsproj.xml` para encontrar units potencialmente redundantes sem quebrar o build. Use quando limpar `uses`, remover `DCCReference`, investigar erro `F2613`, validar se uma unit ja vem de package/dependencia, mitigar `F2046 Out of memory` com movimentacao de `interface uses` para `implementation uses`, ou preparar remocao incremental com build obrigatorio.
+description: Audita `nsjFinancas.dpr`, `nsjFinancas.dproj` e `build/xmls/nsjfinancas.nsproj.xml` para encontrar units potencialmente redundantes sem quebrar o build. Use quando limpar `uses`, remover `DCCReference`, investigar `F2613`, validar se uma unit ja vem de package ou dependencia, ou mover `interface uses` para `implementation uses`; nao use para planejar migracao de modulo completo.
 ---
 
 # Verificar Units Redundantes

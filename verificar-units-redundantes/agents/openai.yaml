@@ -1,4 +1,4 @@
 interface:
   display_name: "Verificar Units Redundantes"
-  short_description: "Audita units redundantes com build seguro"
-  default_prompt: "Use $verificar-units-redundantes para auditar units redundantes em nsjFinancas sem quebrar o build."
+  short_description: "Audita units candidatas sem quebrar build"
+  default_prompt: "Use $verificar-units-redundantes para auditar units candidatas a remocao no nsjFinancas sem quebrar o build."

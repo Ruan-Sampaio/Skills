@@ -1,0 +1,4 @@
+interface:
+  display_name: "NSJFinancas Refactor Guardrails"
+  short_description: "Protege refactor operacional do nsjFinancas"
+  default_prompt: "Use $nsjfinancas-refactor-guardrails para executar um refactor seguro no nsjFinancas sem quebrar build, dependencias ou search path."

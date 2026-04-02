@@ -1,21 +1,21 @@
 ---
 name: investigar-filtro-saldo-adiantamento
-description: Rastreia perda de filtro de data no fluxo do Extrato de Credito ou Saldo Adiantamento da UI ate o SQL. Use quando o usuario relatar que o filtro nao respeita data inicial/final, quando houver divergencia entre tela e banco, ou quando precisar localizar em qual camada o parametro se perde entre frame/browser, controller, dao e SQL.
+description: Investiga por que o filtro de data do Extrato de Credito ou Saldo Adiantamento nao e respeitado entre UI, controller, DAO e SQL. Use quando a tela listar dados fora do periodo, quando houver divergencia entre Visualizar e CSV, ou quando precisar identificar em qual camada o parametro de data ou periodo se perde; nao use para bugs de estorno ou regressao historica de function SQL.
 ---
 
 # Investigar Filtro de Saldo Adiantamento
 
-Executar este fluxo ao depurar filtros de data ou tipo de selecao ligados ao saldo de adiantamento.
+Executar este fluxo ao depurar filtros de data, selecao e sinal ligados ao saldo de adiantamento.
 
 ## Fluxo
 
 1. Ler [workflow.md](references/workflow.md).
-2. Localizar o ponto de entrada do filtro na UI.
-3. Seguir o valor pelo browser ou frame ate o controller.
-4. Confirmar DTO ou estrutura de filtro.
-5. Confirmar parametros passados ao DAO.
-6. Confirmar o SQL final e os binds.
-7. Verificar conversoes de data, timezone e defaults.
+2. Reproduzir no frame de origem e confirmar os controles de data usados.
+3. Seguir o valor de data no browser ou frame ate o controller.
+4. Confirmar a estrutura de filtro e os parametros enviados ao DAO.
+5. Confirmar assinatura da function SQL e binds executados em runtime.
+6. Verificar fallback via `current_setting` ou configuracao de sessao.
+7. Testar a function diretamente no banco com e sem parametros.
 8. Registrar a camada onde o filtro se perde e propor patch minimo.
 
 ## Regras de investigacao
@@ -27,6 +27,7 @@ Executar este fluxo ao depurar filtros de data ou tipo de selecao ligados ao sal
 - Se a investigacao tocar SQL, validar compatibilidade com `PostgreSQL 9.3` antes de propor patch.
 - Nao propor `jsonb`, `to_jsonb`, `jsonb_*` ou `FILTER (...)` em correcao SQL desse projeto.
 - Se houver necessidade de filtro condicional em agregacao, preferir `CASE WHEN`.
+- Preservar encoding fisico dos arquivos alterados; nao converter automaticamente.
 
 ## Saida minima
 

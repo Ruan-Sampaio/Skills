@@ -1,6 +1,6 @@
 ---
 name: forense-funcao-sql-financas
-description: Rastreia regressao em funcoes SQL de financas a partir de historico Git e validacao no banco atual. Use quando uma funcionalidade antes funcionava e parou, quando houver suspeita de mudanca em script SQL, quando for necessario apontar commit provavel da quebra, ou quando precisar separar problema de codigo aplicativo e problema de funcao SQL implantada.
+description: Rastreia regressao em function SQL de `financas` a partir de historico Git e validacao no banco atual. Use quando algo antes funcionava e parou, quando houver suspeita de mudanca em script SQL, quando for necessario apontar o commit provavel da quebra, ou quando precisar separar problema de codigo aplicativo de problema na definicao SQL implantada.
 ---
 
 # Forense Funcao Sql Financas

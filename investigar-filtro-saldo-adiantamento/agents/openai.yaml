@@ -1,4 +1,4 @@
 interface:
   display_name: "Investigar Filtro Saldo Adiantamento"
-  short_description: "Rastreia perda de filtro da UI ao SQL"
-  default_prompt: "Use $investigar-filtro-saldo-adiantamento para localizar onde um filtro de data se perde entre UI, controller, DAO e SQL."
+  short_description: "Rastreia perda de filtro de data"
+  default_prompt: "Use $investigar-filtro-saldo-adiantamento para localizar onde o filtro de data ou periodo se perde entre UI, controller, DAO e SQL no fluxo de saldo adiantamento."

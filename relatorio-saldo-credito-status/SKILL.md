@@ -1,6 +1,6 @@
 ---
 name: relatorio-saldo-credito-status
-description: Mapeia o estado atual dos artefatos ERP e SQL do relatorio de saldo de credito e aponta lacunas entre o que existe e o que ainda falta. Use quando precisar levantar formularios, browsers, controllers, DAOs, DTOs, scripts SQL, filtros e diferencas entre versoes sintetica, simplificada e analitica.
+description: Mapeia o estado atual dos artefatos ERP e SQL do relatorio de saldo de credito e aponta lacunas objetivas do que existe versus o que falta. Use quando precisar consolidar status de implementacao, validar paridade entre tela e CSV, revisar versoes sintetica, simplificada e analitica, ou preparar a proxima etapa; nao use para depurar um bug pontual de filtro ou estorno ja localizado.
 ---
 
 # Relatorio Saldo Credito Status
@@ -12,7 +12,7 @@ Executar este fluxo para diagnosticar cobertura atual do relatorio de saldo de c
 1. Ler [workflow.md](references/workflow.md).
 2. Listar artefatos ERP relacionados.
 3. Listar scripts SQL, functions e views envolvidos.
-4. Confirmar parametros, filtros e ordenacao usados hoje.
+4. Confirmar parametros e filtros usados em Visualizar e Exportar CSV.
 5. Comparar o existente com o alvo esperado.
 6. Registrar lacunas por prioridade e impacto.
 
@@ -25,6 +25,8 @@ Executar este fluxo para diagnosticar cobertura atual do relatorio de saldo de c
 - Na camada SQL, registrar explicitamente incompatibilidades com `PostgreSQL 9.3`.
 - Tratar `jsonb`, `to_jsonb` e `FILTER (...)` como incompatibilidades objetivas.
 - Nao marcar `json`, `json_array_elements` ou `LATERAL` como problema de versao por si so.
+- Marcar explicitamente quando o filtro por `sinal` (receber/pagar) estiver ausente.
+- Manter scripts de relatorio idempotentes quando houver ajuste de layout.
 
 ## Saida minima
 

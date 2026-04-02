@@ -1,4 +1,4 @@
 interface:
   display_name: "Padrao de Projeto NSJFinancas"
-  short_description: "Define guardrails de arquitetura e build"
-  default_prompt: "Use $nsjfinancas-padrao-projeto para revisar a proposta tecnica e garantir aderencia ao padrao de projeto do nsjFinancas."
+  short_description: "Define guardrails de arquitetura do nsjFinancas"
+  default_prompt: "Use $nsjfinancas-padrao-projeto para revisar a proposta tecnica e garantir aderencia ao padrao arquitetural do nsjFinancas antes de mudar dpr, dproj, nsproj ou contrato ERP/SQL."

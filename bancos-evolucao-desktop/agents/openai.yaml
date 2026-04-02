@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bancos Evolucao Desktop"
+  short_description: "Opera evolucao local de banco com logs"
+  default_prompt: "Use $bancos-evolucao-desktop para evoluir a base local em bancos desktop, localizar scripts gerados e resumir erros ou logs."

@@ -1,6 +1,6 @@
 ---
 name: nsjfinancas-padrao-projeto
-description: Padroniza decisoes de arquitetura no nsjFinancas para manter fronteira de modulo funcional, estrategia correta de package/dependencia e consistencia entre ERP e SQL. Use quando desenhar refactor, revisar proposta tecnica, avaliar impacto de extracao de modulo, alinhar contrato de funcoes SQL de relatorio, ou definir guardrails antes de mudar dpr/dproj/nsproj.
+description: Define guardrails de arquitetura para o `nsjFinancas`, mantendo fronteira de modulo funcional, estrategia correta de package/dependencia e consistencia entre ERP e SQL. Use antes de desenhar refactor, revisar proposta tecnica, avaliar impacto de extracao de modulo ou alinhar contrato de function SQL; nao use como skill principal para remocao operacional de units especificas.
 ---
 
 # NSJFinancas Padrao de Projeto
